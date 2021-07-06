@@ -1,5 +1,8 @@
 Big O notation for beginner 
-source : https://hackernoon.com/big-o-for-beginners-622a64760e2
+
+source : 
+    https://hackernoon.com/big-o-for-beginners-622a64760e2
+    https://medium.com/bee-solution-partners/penjelasan-sederhana-tentang-time-complexity-dan-big-o-notation-4337ba275cfe
 
 Use : measure the time and space complexity of the code 
 
@@ -16,6 +19,7 @@ O(1) : Constant time, the time is consistent for each execution.
     
     No matter whether it is a O(1), O(2), etc, we round it down to O(1) which means 
     that our operation is a flat line in terms of scalability. 
+    The number of time does not affect the execution time.
 
 
 O(n): The notation is called O(n) if it runs for every value in the input. THe operation
@@ -37,5 +41,39 @@ O(n^2) : Example of this notation would be nested loop
 
     This also known as quadratic time. Each time the input number increases, 
     the operation increases quadrratically.
+
+O(log n): Logarithmic time, given an input of size n , the number of steps it takes 
+          to accomplish the task are decreased by some factor with each step.
+          Example : 
+            let sortedArray = [11, 24, 30, 43, 51, 61, 73, 86];
+            function isExists(number, array){
+                var midPoint = Math.floor( array.length /2 );
+                if( array[midPoint] === num) return true;
+                let isFirstHalf = false;
+                if( array[midPoint] < num ) isFirstHalf = true;
+            
+                else if( array[midpoint] > num ) isFirstHalf = false;
+                if (array.length == 1) return false;
+                else { 
+                    if (isFirstHalf) 
+                        return isExists(number, getFirstHalf(array));
+                    else 
+                        return isExists(number, getSecondHalf(array));
+                }
+            }
+
+            isExists (24, sortedArray); // return true
+            isExists (27, sortedArray); // return false
+
+            Note : Recursive function usually modeled as O(log n)
+
+Calculating Big O : 
+    Rules to approximate big O : 
+    1. Assume the worst
+    2. Remove the constant 
+    3. Use different terms for inputs 
+    4. Drop any non dominants
+
+
 
 
