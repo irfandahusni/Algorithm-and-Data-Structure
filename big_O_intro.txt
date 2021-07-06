@@ -1,3 +1,41 @@
 Big O notation for beginner 
 source : https://hackernoon.com/big-o-for-beginners-622a64760e2
 
+Use : measure the time and space complexity of the code 
+
+O(1) : Constant time, the time is consistent for each execution. 
+    Example : 
+        const items = [0,1,2,3,4,5]
+
+        const logFirstTwoItems = (items) => {
+            console.log(items[0]); // O(1)
+            console.log(items[1]); // O(1)
+        }
+
+        logFirstTwoItems(items); // O(2)
+    
+    No matter whether it is a O(1), O(2), etc, we round it down to O(1) which means 
+    that our operation is a flat line in terms of scalability. 
+
+
+O(n): The notation is called O(n) if it runs for every value in the input. THe operation
+    increase in a linear fashion according to the inputs (n).
+
+O(n^2) : Example of this notation would be nested loop
+    Example :
+        const items = ['one', 'two', 'three', 'four', 'five'];
+
+        logAllpairs = (items) => {
+            for (let i = 0; i<items.length; i++){
+                for (let j=0; j<items.length; j++){
+                    console.log(items[i], items[j])
+                }
+            }
+        }
+
+        logAllpairs(items)
+
+    This also known as quadratic time. Each time the input number increases, 
+    the operation increases quadrratically.
+
+
