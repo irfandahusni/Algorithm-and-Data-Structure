@@ -3,6 +3,7 @@ Big O notation for beginner
 source : 
     https://hackernoon.com/big-o-for-beginners-622a64760e2
     https://medium.com/bee-solution-partners/penjelasan-sederhana-tentang-time-complexity-dan-big-o-notation-4337ba275cfe
+    https://www.youtube.com/watch?v=__vX2sjlpXU
 
 Use : measure the time and space complexity of the code 
 
@@ -68,12 +69,96 @@ O(log n): Logarithmic time, given an input of size n , the number of steps it ta
             Note : Recursive function usually modeled as O(log n)
 
 Calculating Big O : 
-    Rules to approximate big O : 
-    1. Assume the worst
-    2. Remove the constant 
-    3. Use different terms for inputs 
-    4. Drop any non dominants
+    Determine Big O : 
+    1. Identify your code 
+    2. Identify N
+    3. Count the steps in a typical run
+    4. Keep the most significant part
 
 
+    Example : 
+        y = 5 + 20(72*28) // This is O(1)
+        for x in range(0,n): // This is O(n)
+            print(x)         
+
+        total time = O(1) + O(n) = O(n)
+        =====================================
+        x = 5 + 99*7 // This is O(1)
+        for x in range(0,n): // This is O(n)
+            print(x)
+        for x in range(0,n): // This is O(n^2)
+            for x2 in range(0,n):
+                print(x,x2)
+
+        total time = O(n^2)
+
+        ======================================
+        if x>0 :
+            //O(1)
+        else if x < 0 :
+            // O(log n)
+        else :
+            // O(n^2) 
+
+        total time = O(n^2)
+
+        =======================================
+
+        moms = [
+            ("Ted", "Jane"),
+            ("Tom", "Sarah"),
+            ("Bobby", "Elleanor"),
+            .....
+        ]
+
+        def find_mom(moms, child):
+            for child_name , mom_name in moms: //3*(N/2)
+                if child == child_name :  //1*(N/2)
+                    return mom_name //1
+            return None
+
+        We have a data strucutre called "moms" that is a list of tuple.
+        We are going to searching through this list, some runs we will 
+        find in the first entry and the other runs in the last entry.
+        So the average of searching through the list is n/2. 
+
+        In the loop, there are 3 steps: 
+            1. Get the tuple out of the list
+            2. Assign a child to a child_name
+            3. Assign a mom to a mom_name 
+
+            Whuch means this loop is contribute 3*(N/2) steps
+        
+        In the if condition, there are 1 step, that is to match the 
+        child with the entire list within the loop. So this line 
+        contributes 1*(N/2) steps
+
+        Return mom_name will only happen once. So it is 1.
+
+        So the total of the asymptotic complexity will be : 
+        3*N/2 + 1*N/2 + 1 
+        or 
+        2N+1
+        get rid of the constant resulting:
+        2N
+        which means this is an O(n) functions
+
+        ================================================================
+
+        def how_many_grandmothers(moms):
+            grandmothers = 0 
+            for child , mom in moms: // This is N or O(N)
+                grandma = find_mom(moms, mom) // This is N or O(N) (?)
+                if grandma: // This is N or O(N)
+                    grandmothers += 1
+            return grandmothers // This is 1
+
+        Now, realize that find mom contains loop so that the find_mom function
+        actually O(N^2). It is the highest. 
+
+        So the complexity of this function is O(N^2)     
+
+
+        
 
 
