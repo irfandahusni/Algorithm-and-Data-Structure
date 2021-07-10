@@ -38,11 +38,10 @@ class LinkedList(object):
         the 2nd and 3rd elements."""
 
         if position == 1 :
+            new_element.next = self.head
             self.head = new_element
-            element_in_pos = self.get_position(position)
-            self.head.next = element_in_pos
         else : 
-            if self.get_position == None :
+            if self.get_position == None : #end of list
                 element_before_pos = self.get_position(position-1)
                 element_before_pos.next = new_element 
                 
@@ -76,35 +75,15 @@ class LinkedList(object):
             current_position = current_position.next
 
 
-        
-# # Test cases
-# # Set up some Elements
-# e1 = Element(1)
-# e2 = Element(2)
-# e3 = Element(3)
-# e4 = Element(4)
-
-# # Start setting up a LinkedList
-# ll = LinkedList(e1)
-# ll.append(e2)
-# ll.append(e3)
-
-# # # Test get_position
-# # # Should print 3
-# # print ll.head.next.next.value
-# # # Should also print 3
-# # print ll.get_position(3).value
-
-# # Test insert
-# ll.insert(e4,3)
-# # Should print 4 now
-# # print(ll.get_position(3).value)
-
-# # Test delete
-# ll.delete(1)
-# # Should print 2 now
-# print(ll.get_position(1).value)
-# # Should print 4 now
-# print(ll.get_position(2).value)
-# # Should print 3 now
-# print(ll.get_position(3).value)
+    def insert_first(self, new_element):
+        "Insert new element as the head of the LinkedList"
+        self.insert(new_element,1)
+    
+    def delete_first(self):
+        if self.head:
+            deleted_element = self.head
+            temp = deleted_element.next
+            self.head = temp
+            return deleted_element
+        else:
+            return None
