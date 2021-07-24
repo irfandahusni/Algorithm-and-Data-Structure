@@ -9,3 +9,8 @@ class Reviewer:
         self.kelas = kelas
     def review(self):
         print("Reviewer " + self.nama + " bertanggung jawab di kelas " + self.kelas)
+
+def autuSummon():
+    print("autoSummon")
+
+autuSummon()
