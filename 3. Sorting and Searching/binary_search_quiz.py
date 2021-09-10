@@ -17,7 +17,7 @@ def binary_search(input_array, value):
     result = 0
     while True :
         if (len(input_array) % 2)== 0 :
-            middle_index = (len(input_array)/2)
+            middle_index = int((len(input_array)/2))
         if (len(input_array) % 2)!= 0 :
             middle_index = int(math.floor(len(input_array)/2))+1
         middle_value = input_array[middle_index]
